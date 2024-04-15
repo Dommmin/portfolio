@@ -48,7 +48,7 @@ export default function Home() {
                       isVisible ? 'opacity-100' : ''
                   }`}>
                       <p className="text-3xl font-semibold text-white">Hi There!</p>
-                      <p className="font-bold text-6xl text-white">I'm <span className="text-info">Dominik Jasiński</span></p>
+                      <p className="font-bold text-6xl text-white">I&apos;m <span className="text-info">Dominik Jasiński</span></p>
                       <p>&nbsp;<TextEffect fullText="Fullstack Developer."/></p>
                   </div>
                   <div className="">
