@@ -36,7 +36,7 @@ export default function Home() {
     return (
       <>
         <Navbar aboutMe={aboutMe} projects={projects} />
-          <div className="h-[calc(100vh-80px)] px-4">
+          <div className="min-h-[calc(100vh-80px)] px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:justify-items-start items-center space-x-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
                   <div className={`opacity-0 transition-opacity duration-1000 ease-out ${
                       isVisible ? 'opacity-100' : ''
