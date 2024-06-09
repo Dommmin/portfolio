@@ -4,12 +4,6 @@ import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import profile from "../../public/profile.png"
 import main from "../../public/main.png"
-import laravel from "../../public/laravel.svg"
-import vue from "../../public/vue.svg"
-import react from "../../public/react.svg"
-import symfony from "../../public/symfony.svg"
-import docker from "../../public/docker.svg"
-import python from "../../public/python.svg"
 import blog from "../../public/Blog.png"
 import chat from "../../public/Chat.png"
 import ecommerce from "../../public/Ecommerce.png"
@@ -42,7 +36,7 @@ export default function Home() {
     return (
       <>
         <Navbar aboutMe={aboutMe} projects={projects} />
-          <div className="min-h-screen bg-gray-800 px-4">
+          <div className="h-[calc(100vh-80px)] px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:justify-items-start items-center space-x-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
                   <div className={`opacity-0 transition-opacity duration-1000 ease-out ${
                       isVisible ? 'opacity-100' : ''
@@ -54,14 +48,6 @@ export default function Home() {
                   <div className="">
                       <Image className="rounded-b-full" alt="profile" src={main} width={400} objectFit="cover" />
                   </div>
-              </div>
-              <div className="grid grid-cols-3 gap-4 md:grid-cols-6 justify-center items-center space-x-4 mt-10 max-w-7xl mx-auto">
-                  <Image width={100} src={laravel} alt="laravel" />
-                  <Image width={100} src={symfony} alt="symfony" />
-                  <Image width={100} src={vue} alt="vue" />
-                  <Image width={100} src={react} alt="react" />
-                  <Image width={100} src={python} alt="python" />
-                  <Image width={100} src={docker} alt="docker" />
               </div>
           </div>
           <div className="min-h-screen bg-gray-900" ref={aboutMe}>
@@ -76,15 +62,15 @@ export default function Home() {
                       </p>
                       <ol className="mt-10 space-y-2 text-xl">
                           <li><span className="font-bold">Experience:</span> 2 years</li>
-                          <li><span className="font-bold">Technology:</span> PHP, Javascript, Python</li>
+                          <li><span className="font-bold">Technology:</span> PHP, Javascript</li>
                           <li><span className="font-bold">Frameworks:</span> Laravel, Symfony, React, Vue</li>
                           <li><span className="font-bold">Languages:</span> Polish - Native, English - B1</li>
                           <li><span className="font-bold">Soft skills:</span> Teamwork, Communication,
-                              Interpersonal, Time management
+                              Adaptability, Time management
                           </li>
                       </ol>
                   </div>
-                  <div className="pt-20 space-x-4">
+                  <div className="mt-5 lg:mt-10 mb-5 space-x-4">
                       <a href="https://www.linkedin.com/in/dominik-jasi%C5%84ski/" target="_blank" className="btn btn-info btn-outline px-8">Hire me</a>
                       <button onClick={handleDownload} className="btn btn-info px-8">Download CV</button>
                   </div>
