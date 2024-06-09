@@ -78,39 +78,62 @@ export default function Home() {
           </div>
           <div className="min-h-screen bg-gray-800" ref={projects}>
               <h2 className="font-bold text-7xl text-center text-white pt-20">Projects</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-auto max-w-7xl pt-10">
-                  <div className="card bg-gray-900 shadow-xl">
-                      <figure className="mb-2">
-                          <Image src={ecommerce} alt="Ecommerce"/>
-                      </figure>
-                      <div className="card-body">
-                          <h2 className="card-title flex justify-center items-center mb-4">Laravel Ecommerce</h2>
-                          <div className="flex justify-between">
-                              <Link href="https://gitlab.com/Dommmin/ecommerce" target="_blank"
-                                    className="btn btn-info btn-outline">Source Code</Link>
-                              <button className="btn btn-info" disabled>Live Demo</button>
-                          </div>
-                      </div>
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mx-auto max-w-7xl pt-10">
                   <div className="card bg-gray-900 shadow-xl">
                       <figure className="mb-12">
                           <Image src={chat} alt="Chat"/>
                       </figure>
                       <div className="card-body">
-                          <h2 className="card-title flex justify-center items-center mb-4">Laravel Chat</h2>
+                          <h2 className="card-title flex text-center justify-center items-center mb-4">Laravel, Vue.js <br /> Chat App</h2>
+                          <p className="text-center text-xs">In development...</p>
                           <div className="flex justify-between">
-                              <Link href="https://gitlab.com/Dommmin/chat-app" target="_blank"
-                                    className="btn btn-info btn-outline">Source Code</Link>
-                              <button className="btn btn-info" disabled>Live Demo</button>
+                              <Link
+                                  href="https://github.com/Dommmin/chat-app"
+                                  target="_blank"
+                                  className="btn btn-info btn-outline"
+                              >Source Code</Link>
+                              <Link
+                                  href="https://dommin.smallhost.pl/"
+                                  target="_blank"
+                                  className="btn btn-info"
+                              >Live Demo</Link>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="card bg-gray-900 shadow-xl">
+                      <figure className="mb-2">
+                          <Image src={ecommerce} alt="Ecommerce"/>
+                      </figure>
+                      <div className="card-body">
+                          <h2 className="card-title flex justify-center items-center text-center mb-4">Laravel, Next.js <br/>
+                              Ecommerce</h2>
+                          <p className="text-center text-xs">In progress...</p>
+                          <div className="flex justify-between">
+                              <Link
+                                  href="https://github.com/Dommmin/store"
+                                  target="_blank"
+                                  className="btn btn-info btn-outline"
+                              >Source Code</Link>
+                              <Link
+                                  href="https://159.89.214.17/"
+                                  target="_blank"
+                                  className="btn btn-info"
+                              >Live Demo</Link>
                           </div>
                       </div>
                   </div>
                   <div className="card bg-gray-900 shadow-xl">
                       <figure className="mb-12">
-                          <img className="p-8" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" alt="Chat"/>
+                          <Image className="p-8"
+                               src={"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png"}
+                               width={200}
+                               height={200}
+                               alt="Chat"/>
                       </figure>
                       <div className="card-body">
-                          <h2 className="card-title flex justify-center items-center mb-4">Laravel API Voting</h2>
+                          <h2 className="card-title flex justify-center items-center text-center mb-4">Laravel <br/> Voting
+                          </h2>
+                          <p className="text-center text-xs">API only</p>
                           <div className="flex justify-between">
                               <Link href="https://gitlab.com/Dommmin/voting" target="_blank"
                                     className="btn btn-info btn-outline">Source Code</Link>
