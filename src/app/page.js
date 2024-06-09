@@ -57,7 +57,7 @@ export default function Home() {
                       <Image loading="eager" alt="profile" src={profile} layout="fill" objectFit="cover"/>
                   </div>
                   <div className="mt-20">
-                      <p className="text-5xl font-bold text-white">I develop <span
+                      <p className="text-5xl font-bold text-white">I make <span
                           className="text-info">Web Apps</span>
                       </p>
                       <ol className="mt-10 space-y-2 text-xl">
