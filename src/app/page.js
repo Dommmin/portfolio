@@ -26,7 +26,7 @@ export default function Home() {
 
         const a = document.createElement('a');
         a.href = cv;
-        a.download = 'cv.pdf';
+        a.download = 'CV.pdf';
 
         document.body.appendChild(a);
         a.click();
