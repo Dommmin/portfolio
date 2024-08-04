@@ -22,7 +22,7 @@ export default function Home() {
     const projects = useRef(null);
 
     const handleDownload = () => {
-        const cv = '/cv.pdf';
+        const cv = '/CV.pdf';
 
         const a = document.createElement('a');
         a.href = cv;
