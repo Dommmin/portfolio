@@ -96,6 +96,7 @@ export default function Home() {
                                   href="https://dommin.smallhost.pl/"
                                   target="_blank"
                                   className="btn btn-info"
+                                  disabled
                               >Live Demo</Link>
                           </div>
                       </div>
@@ -118,6 +119,7 @@ export default function Home() {
                                   href="https://159.89.214.17/"
                                   target="_blank"
                                   className="btn btn-info"
+                                  disabled
                               >Live Demo</Link>
                           </div>
                       </div>
