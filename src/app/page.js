@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import profile from "../../public/profile.png"
+import profile from "../../public/profile.png";
 import { useRef } from "react";
+import Head from "next/head";
 import Navbar from "./components/Navbar.jsx";
 import TextTypingEffect from "./components/TextTypingEffect.jsx";
 
@@ -44,6 +45,49 @@ export default function Home() {
 
     return (
         <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+            <Head>
+                <title>Dominik Jasiński - Full Stack Developer Portfolio</title>
+                <meta name="description" content="Explore the portfolio of Dominik Jasiński, a Full Stack Developer experienced in PHP, JavaScript, and frameworks like Laravel and Vue.js." />
+                <meta name="keywords" content="Dominik Jasiński, portfolio, Full Stack Developer, Laravel, Vue.js, React, Symfony" />
+                <meta name="author" content="Dominik Jasiński" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="canonical" href="https://portfolio-dominik.vercel.app/" />
+                <link rel="icon" href="/favicon.ico" />
+
+                {/* Open Graph */}
+                <meta property="og:title" content="Dominik Jasiński - Full Stack Developer Portfolio" />
+                <meta property="og:description" content="Discover my projects and expertise in building modern web applications." />
+                <meta property="og:image" content="https://portfolio-dominik.vercel.app/preview.png" />
+                <meta property="og:url" content="https://portfolio-dominik.vercel.app/" />
+                <meta property="og:type" content="website" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Dominik Jasiński - Full Stack Developer Portfolio" />
+                <meta name="twitter:description" content="Check out my projects and professional experience." />
+                <meta name="twitter:image" content="https://portfolio-dominik.vercel.app/preview.png" />
+
+                {/* JSON-LD */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Person",
+                        "name": "Dominik Jasiński",
+                        "jobTitle": "Full Stack Developer",
+                        "url": "https://portfolio-dominik.vercel.app",
+                        "sameAs": [
+                            "https://www.linkedin.com/in/dominik-jasi%C5%84ski/",
+                            "https://github.com/Dommmin"
+                        ],
+                        "worksFor": {
+                            "@type": "Organization",
+                            "name": "Self-Employed"
+                        },
+                        "description": "Explore the portfolio of Dominik Jasiński, a specialist in creating modern web applications."
+                    })}
+                </script>
+            </Head>
+
             <Navbar aboutMe={aboutMe} projects={projects} />
 
             <motion.div
