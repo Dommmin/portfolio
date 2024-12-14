@@ -20,8 +20,8 @@ export default function Navbar({ aboutMe, projects }) {
                 <div className="flex items-baseline space-x-4">
                     <p className="btn btn-sm" onClick={() => smoothScroll(aboutMe)}>About Me</p>
                     <p className="btn btn-sm" onClick={() => smoothScroll(projects)}>My Projects</p>
-                    <a href="https://dommmin.smallhost.pl" className="btn btn-sm btn-accent" target="_blank" rel="noreferrer">My Blog</a>
                 </div>
+                <a href="https://dommmin.smallhost.pl" className="btn btn-sm btn-accent" target="_blank">My Blog</a>
             </nav>
             <div className="z-50">
                 <button onClick={scrollToHome} className="fixed bottom-4 right-4 btn btn-circle btn-class">
