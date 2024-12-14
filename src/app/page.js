@@ -1,12 +1,11 @@
 'use client';
 
-import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import profile from "../../public/profile.png"
-import main from "../../public/main.png"
-import TextTypingEffect from "@/app/components/TextTypingEffect";
 import { useRef } from "react";
+import Navbar from "./components/Navbar.jsx";
+import TextTypingEffect from "./components/TextTypingEffect.jsx";
 
 export default function Home() {
     const aboutMe = useRef(null);
