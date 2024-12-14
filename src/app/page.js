@@ -2,163 +2,220 @@
 
 import Navbar from "@/app/components/Navbar";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import profile from "../../public/profile.png"
 import main from "../../public/main.png"
-import blog from "../../public/Blog.png"
-import chat from "../../public/Chat.png"
-import ecommerce from "../../public/Ecommerce.png"
-import TextEffect from "@/app/components/TextEffect";
-import {useEffect, useRef, useState} from "react";
-import Link from "next/link";
+import TextTypingEffect from "@/app/components/TextTypingEffect";
+import { useRef } from "react";
 
 export default function Home() {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        setIsVisible(true);
-    }, []);
-
     const aboutMe = useRef(null);
     const projects = useRef(null);
 
     const handleDownload = () => {
         const cv = '/CV.pdf';
+        const link = document.createElement('a');
+        link.href = cv;
+        link.download = 'Dominik_Jasinski_CV.pdf';
+        link.click();
+    };
 
-        const a = document.createElement('a');
-        a.href = cv;
-        a.download = 'CV.pdf';
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3,
+                delayChildren: 0.2
+            }
+        }
+    };
 
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 100
+            }
+        }
     };
 
     return (
-      <>
-        <Navbar aboutMe={aboutMe} projects={projects} />
-          <div className="min-h-[calc(100vh-80px)] px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:justify-items-start items-center space-x-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
-                  <div className={`opacity-0 transition-opacity duration-1000 ease-out ${
-                      isVisible ? 'opacity-100' : ''
-                  }`}>
-                      <p className="text-3xl font-semibold text-white">Hi There!</p>
-                      <p className="font-bold text-6xl text-white">I&apos;m <span className="text-info">Dominik Jasiński</span></p>
-                      <p>&nbsp;<TextEffect fullText="Fullstack Developer."/></p>
-                  </div>
-                  <div className="">
-                      <Image className="rounded-b-full" alt="profile" src={main} width={400} objectFit="cover" />
-                  </div>
-              </div>
-          </div>
-          <div className="min-h-screen bg-gray-900" ref={aboutMe}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center items-center space-x-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
-                  <div
-                      className="bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-[500px] md:w-[500px]">
-                      <Image loading="eager" alt="profile" src={profile} layout="fill" objectFit="cover"/>
-                  </div>
-                  <div className="mt-20">
-                      <p className="text-5xl font-bold text-white">I make <span
-                          className="text-info">Web Apps</span>
-                      </p>
-                      <ol className="mt-10 space-y-2 text-xl">
-                          <li><span className="font-bold">Experience:</span> 2 years</li>
-                          <li><span className="font-bold">Technology:</span> PHP, Javascript</li>
-                          <li><span className="font-bold">Frameworks:</span> Laravel, Symfony, React, Vue</li>
-                          <li><span className="font-bold">Languages:</span> Polish - Native, English - B1</li>
-                          <li><span className="font-bold">Soft skills:</span> Teamwork, Communication,
-                              Adaptability, Time management
-                          </li>
-                      </ol>
-                  </div>
-                  <div className="mt-5 lg:mt-10 mb-5 space-x-4">
-                      <a href="https://www.linkedin.com/in/dominik-jasi%C5%84ski/" target="_blank" className="btn btn-info btn-outline px-8">Hire me</a>
-                      <button onClick={handleDownload} className="btn btn-info px-8">Download CV</button>
-                  </div>
-              </div>
-          </div>
-          <div className="min-h-screen bg-gray-800" ref={projects}>
-              <h2 className="font-bold text-7xl text-center text-white pt-20">Projects</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mx-auto max-w-7xl pt-10">
-                  <div className="card bg-gray-900 shadow-xl">
-                      <figure className="mb-12">
-                          <Image src={chat} alt="Chat"/>
-                      </figure>
-                      <div className="card-body">
-                          <h2 className="card-title flex text-center justify-center items-center mb-4">Laravel, Vue.js <br /> Chat App</h2>
-                          <p className="text-center text-xs">In development...</p>
-                          <div className="flex justify-between">
-                              <Link
-                                  href="https://github.com/Dommmin/chat-app"
-                                  target="_blank"
-                                  className="btn btn-info btn-outline"
-                              >Source Code</Link>
-                              <Link
-                                  href="https://dommin.smallhost.pl/"
-                                  target="_blank"
-                                  className="btn btn-info"
-                                  disabled
-                              >Live Demo</Link>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="card bg-gray-900 shadow-xl">
-                      <figure className="mb-2">
-                          <Image src={ecommerce} alt="Ecommerce"/>
-                      </figure>
-                      <div className="card-body">
-                          <h2 className="card-title flex justify-center items-center text-center mb-4">Laravel, Next.js <br/>
-                              Ecommerce</h2>
-                          <p className="text-center text-xs">In progress...</p>
-                          <div className="flex justify-between">
-                              <Link
-                                  href="https://github.com/Dommmin/store"
-                                  target="_blank"
-                                  className="btn btn-info btn-outline"
-                              >Source Code</Link>
-                              <Link
-                                  href="https://159.89.214.17/"
-                                  target="_blank"
-                                  className="btn btn-info"
-                                  disabled
-                              >Live Demo</Link>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="card bg-gray-900 shadow-xl">
-                      <figure className="mb-12">
-                          <Image className="p-8"
-                               src={"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png"}
-                               width={200}
-                               height={200}
-                               alt="Chat"/>
-                      </figure>
-                      <div className="card-body">
-                          <h2 className="card-title flex justify-center items-center text-center mb-4">Laravel <br/> Voting
-                          </h2>
-                          <p className="text-center text-xs">API only</p>
-                          <div className="flex justify-between">
-                              <Link href="https://gitlab.com/Dommmin/voting" target="_blank"
-                                    className="btn btn-info btn-outline">Source Code</Link>
-                              <button className="btn btn-info" disabled>Live Demo</button>
-                          </div>
-                      </div>
-                  </div>
-                  <div className="card bg-gray-900 shadow-xl">
-                      <figure className="mb-20">
-                          <Image src={blog} alt="Blog"/>
-                      </figure>
-                      <div className="card-body">
-                          <h2 className="card-title flex justify-center items-center">Symfony Blog</h2>
-                          <p className="text-center text-xs">In progress...</p>
-                          <div className="flex justify-between">
-                              <Link href="https://gitlab.com/Dommmin/blog" target="_blank"
-                                    className="btn btn-info btn-outline">Source Code</Link>
-                              <Link href="#" className="btn btn-info" disabled>Live Demo</Link>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </>
+        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+            <Navbar aboutMe={aboutMe} projects={projects} />
+
+            <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+                className="min-h-[calc(100vh-80px)] px-4 flex items-center"
+            >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <motion.div variants={itemVariants} className="self-center space-y-4">
+                        <motion.p
+                            className="text-3xl font-light text-gray-300"
+                            variants={itemVariants}
+                        >
+                            Hi, I&apos;m
+                        </motion.p>
+                        <motion.h1
+                            className="text-6xl font-bold"
+                            variants={itemVariants}
+                        >
+                            Dominik Jasiński
+                        </motion.h1>
+                        <TextTypingEffect
+                            text="Full Stack Developer"
+                            className="text-3xl text-teal-400"
+                        />
+                        <motion.div
+                            variants={itemVariants}
+                            className="flex space-x-4 pt-6"
+                        >
+                            <a
+                                href="https://www.linkedin.com/in/dominik-jasi%C5%84ski/"
+                                target="_blank"
+                                className="btn btn-outline btn-primary"
+                            >
+                                LinkedIn
+                            </a>
+                            <button
+                                onClick={handleDownload}
+                                className="btn btn-primary"
+                            >
+                                Download CV
+                            </button>
+                        </motion.div>
+                    </motion.div>
+
+                </div>
+            </motion.div>
+
+            <motion.section
+                ref={aboutMe}
+                initial="hidden"
+                whileInView="visible"
+                variants={containerVariants}
+                className="min-h-screen py-20 bg-gray-800/50"
+            >
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex justify-center"
+                    >
+                        <div className="relative group">
+                            <Image
+                                src={profile}
+                                alt="Dominik Jasinski portrait"
+                                className="bg-gradient-to-b from-teal-500 rounded-xl shadow-2xl"
+                                width={500}
+                                priority
+                            />
+                        </div>
+                    </motion.div>
+
+                    <motion.div variants={itemVariants} className="space-y-6 p-4">
+                        <h2 className="text-5xl font-bold mb-8">About Me</h2>
+                        <div className="space-y-4 text-lg text-gray-300">
+                            <p>
+                                I am a dedicated <span className="text-teal-400">Full Stack Developer </span>
+                                with 2 years of experience in creating scalable web applications.
+                            </p>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h3 className="font-semibold text-xl mb-2">Technologies</h3>
+                                    <ul className="list-disc list-inside text-gray-400">
+                                        <li>PHP (Laravel, Symfony)</li>
+                                        <li>JavaScript</li>
+                                        <li>React, Vue.js</li>
+                                        <li>TypeScript</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-xl mb-2">Skills</h3>
+                                    <ul className="list-disc list-inside text-gray-400">
+                                        <li>Teamwork</li>
+                                        <li>Communication</li>
+                                        <li>Adaptability</li>
+                                        <li>Time Management</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </motion.section>
+
+            <motion.section
+                ref={projects}
+                initial="hidden"
+                whileInView="visible"
+                variants={containerVariants}
+                className="min-h-screen py-20 bg-gray-900/50"
+            >
+                <div className="max-w-6xl mx-auto">
+                    <motion.h2
+                        variants={itemVariants}
+                        className="text-5xl font-bold text-center mb-16"
+                    >
+                        My Projects
+                    </motion.h2>
+
+                    <motion.div
+                        variants={itemVariants}
+                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        {[
+                            {
+                                title: "E-commerce Store",
+                                tech: "Laravel & Next.js",
+                                link: "https://github.com/Dommmin/store"
+                            },
+                            {
+                                title: "Real-time Chat App",
+                                tech: "Laravel & Vue.js",
+                                link: "https://github.com/Dommmin/chat-app"
+                            },
+                            {
+                                title: "Restaurant Reservation",
+                                tech: "Laravel & Vue.js",
+                                link: "https://github.com/Dommmin/restaurant"
+                            },
+                            {
+                                title: "Job Offers Platform",
+                                tech: "Laravel & Vue.js",
+                                link: "https://github.com/Dommmin/jobs"
+                            },
+                            {
+                                title: "Symfony Blog",
+                                tech: "Symfony API Platform & React.js",
+                                link: "https://gitlab.com/Dommmin/blog/"
+                            }
+                        ].map((project, index) => (
+                            <motion.div
+                                key={index}
+                                variants={itemVariants}
+                                className="bg-gray-800 rounded-xl p-6 hover:bg-gray-700 transition-colors group"
+                            >
+                                <h3 className="text-2xl font-semibold mb-2 group-hover:text-teal-400 transition-colors">
+                                    {project.title}
+                                </h3>
+                                <p className="text-gray-400 mb-4">{project.tech}</p>
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    className="text-blue-400 hover:underline"
+                                >
+                                    Source Code
+                                </a>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </motion.section>
+        </div>
     );
 }

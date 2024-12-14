@@ -38,8 +38,7 @@ export default function Navbar({ aboutMe, projects }) {
                           href="/">Developer</Link>
                 </div>
                 <div className="hidden md:flex items-baseline space-x-4">
-                    <p className="btn btn-sm" onClick={scrollToHome}>Home</p>
-                    <p className="btn btn-sm" onClick={() => smoothScroll(aboutMe)}>About</p>
+                    <p className="btn btn-sm" onClick={() => smoothScroll(aboutMe)}>About Me</p>
                     <p className="btn btn-sm" onClick={() => smoothScroll(projects)}>Projects</p>
                 </div>
                 <a href="mailto:domijas96@gmail.com" className="btn btn-outline btn-info btn-sma">Contact me</a>
@@ -47,15 +46,9 @@ export default function Navbar({ aboutMe, projects }) {
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <button
                             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            onClick={() => home}
-                        >
-                            Home
-                        </button>
-                        <button
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                             onClick={() => smoothScroll(aboutMe)}
                         >
-                            About
+                            About Me
                         </button>
                         <button
                             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
