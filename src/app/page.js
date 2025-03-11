@@ -12,6 +12,7 @@ const useIntersectionObserver = (options = { threshold: 0.1 }) => {
     const ref = useRef(null);
 
     useEffect(() => {
+        const currentRef = ref.current;
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setIsIntersecting(true);
@@ -19,14 +20,52 @@ const useIntersectionObserver = (options = { threshold: 0.1 }) => {
             }
         }, options);
 
-        if (ref.current) observer.observe(ref.current);
+        if (currentRef) observer.observe(currentRef);
 
         return () => {
-            if (ref.current) observer.unobserve(ref.current);
+            if (currentRef) observer.unobserve(currentRef);
         };
     }, [options]);
 
     return [ref, isIntersecting];
+};
+
+const ProjectItem = ({ project }) => {
+    const [projectRef, projectInView] = useIntersectionObserver();
+
+    return (
+        <article
+            ref={projectRef}
+            className={`group relative bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all duration-300 h-full flex flex-col ${
+                projectInView ? 'animate-fade-in-up' : 'opacity-0'
+            }`}
+        >
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-600/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            <h3 className="text-2xl font-semibold mb-2 group-hover:text-teal-400 transition-colors">
+                {project.title}
+            </h3>
+            <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.split('&').map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-gray-700 rounded-full text-sm">
+            {tech.trim()}
+          </span>
+                ))}
+            </div>
+            <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
+            <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal-400 hover:text-teal-300 inline-flex items-center gap-2 transition-colors"
+                aria-label={`View source code for ${project.title}`}
+            >
+                View Code
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+            </a>
+        </article>
+    );
 };
 
 export default function Home() {
@@ -87,20 +126,17 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-                {/* Open Graph */}
                 <meta property="og:title" content="Dominik Jasiński - Full Stack Developer Portfolio" />
                 <meta property="og:description" content="Professional portfolio showcasing web development projects and technical expertise." />
                 <meta property="og:image" content="https://portfolio-dominik.vercel.app/preview.png" />
                 <meta property="og:url" content="https://portfolio-dominik.vercel.app/" />
                 <meta property="og:type" content="website" />
 
-                {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Dominik Jasiński - Full Stack Developer" />
                 <meta name="twitter:description" content="Check out my latest web development projects and technical skills." />
                 <meta name="twitter:image" content="https://portfolio-dominik.vercel.app/preview.png" />
 
-                {/* Schema.org */}
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
@@ -120,7 +156,6 @@ export default function Home() {
 
             <Navbar aboutRef={aboutRef} projectsRef={projectsRef} />
 
-            {/* Hero Section */}
             <section
                 ref={heroRef}
                 className="min-h-[calc(100vh-80px)] px-4 flex items-center relative scroll-mt-20"
@@ -177,7 +212,6 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* About Section */}
             <section
                 ref={aboutRef}
                 className="py-20 bg-gray-800/50 scroll-mt-20"
@@ -203,7 +237,7 @@ export default function Home() {
 
                         <div className="space-y-6 text-lg">
                             <p className="text-gray-300 leading-relaxed">
-                                I'm a passionate Full Stack Developer with 2+ years of experience in creating
+                                I&apos;m a passionate Full Stack Developer with 2+ years of experience in creating
                                 modern web applications. My expertise spans both frontend and backend development,
                                 with a strong focus on the Laravel ecosystem and React/Vue.js.
                             </p>
@@ -242,7 +276,6 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Projects Section */}
             <section
                 ref={projectsRef}
                 className="py-20 bg-gray-900/50 scroll-mt-20"
@@ -255,48 +288,13 @@ export default function Home() {
                     </h2>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {projectsData.map((project, index) => {
-                            const [projectRef, projectInView] = useIntersectionObserver();
-                            return (
-                                <article
-                                    key={index}
-                                    ref={projectRef}
-                                    className={`group relative bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all duration-300 h-full flex flex-col ${
-                                        projectInView ? 'animate-fade-in-up' : 'opacity-0'
-                                    }`}
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-600/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                                    <h3 className="text-2xl font-semibold mb-2 group-hover:text-teal-400 transition-colors">
-                                        {project.title}
-                                    </h3>
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                        {project.tech.split('&').map((tech) => (
-                                            <span key={tech} className="px-3 py-1 bg-gray-700 rounded-full text-sm">
-                        {tech.trim()}
-                      </span>
-                                        ))}
-                                    </div>
-                                    <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
-                                    <a
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-teal-400 hover:text-teal-300 inline-flex items-center gap-2 transition-colors"
-                                        aria-label={`View source code for ${project.title}`}
-                                    >
-                                        View Code
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                        </svg>
-                                    </a>
-                                </article>
-                            );
-                        })}
+                        {projectsData.map((project, index) => (
+                            <ProjectItem key={index} project={project} />
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Footer */}
             <footer className="bg-gray-900/80 py-12 mt-20">
                 <div className="max-w-8xl mx-auto px-4">
                     <div className="grid md:grid-cols-3 gap-8 mb-12">
