@@ -12,7 +12,7 @@ export default function Navbar({ aboutMe, projects }) {
 
     return (
         <>
-            <nav className="flex max-w-7xl justify-between items-center mx-auto p-4">
+            <nav className="flex max-w-8xl mx-auto w-full justify-between items-center mx-auto p-4">
                 <div className="hidden md:block">
                     <Link className="btn btn-ghost normal-case text-2xl font-serif font-semibold"
                           href="/">Home</Link>
@@ -21,7 +21,7 @@ export default function Navbar({ aboutMe, projects }) {
                     <p className="btn btn-sm" onClick={() => smoothScroll(aboutMe)}>About Me</p>
                     <p className="btn btn-sm" onClick={() => smoothScroll(projects)}>My Projects</p>
                 </div>
-                <a href="https://dommmin.smallhost.pl" className="btn btn-sm btn-accent" target="_blank">My Blog</a>
+                <a href="#" className="btn btn-sm btn-accent disabled" title="Temporary disabled due to server issues">My Blog</a>
             </nav>
             <div className="z-50">
                 <button onClick={scrollToHome} className="fixed bottom-4 right-4 btn btn-circle btn-class">
