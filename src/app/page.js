@@ -110,16 +110,18 @@ export default function Home() {
         const cv = '/CV.pdf';
         const link = document.createElement('a');
         link.href = cv;
-        link.download = 'Dominik_Jasinski_CV.pdf';
+        link.setAttribute('download', 'Dominik_Jasinski_CV.pdf');
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
     };
 
     return (
         <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
             <Head>
                 <title>Dominik Jasiński - Full Stack Developer Portfolio</title>
-                <meta name="description" content="Professional portfolio of Dominik Jasiński - Experienced Full Stack Developer specializing in Laravel, React, and Vue.js. Check out my projects and technical expertise." />
-                <meta name="keywords" content="Full Stack Developer, Laravel Developer, React Developer, Vue.js, Portfolio, Web Development" />
+                <meta name="description" content="Professional portfolio of Dominik Jasiński - Experienced Full Stack Developer specializing in Laravel, React, and Vue.js. Check out my projects, technical blog, and expertise in web development and DevOps." />
+                <meta name="keywords" content="Dominik Jasiński, Full Stack Developer, Laravel Developer, React Developer, Vue.js, Portfolio, Web Development, DevOps, Docker, GitHub Actions, GitLab CI/CD, Linux, Nginx, Technical Blog" />
                 <meta name="author" content="Dominik Jasiński" />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href="https://portfolio-dominik.vercel.app/" />
@@ -127,14 +129,14 @@ export default function Home() {
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
                 <meta property="og:title" content="Dominik Jasiński - Full Stack Developer Portfolio" />
-                <meta property="og:description" content="Professional portfolio showcasing web development projects and technical expertise." />
+                <meta property="og:description" content="Professional portfolio showcasing web development projects, technical blog, and expertise in modern technologies." />
                 <meta property="og:image" content="https://portfolio-dominik.vercel.app/preview.png" />
                 <meta property="og:url" content="https://portfolio-dominik.vercel.app/" />
                 <meta property="og:type" content="website" />
 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Dominik Jasiński - Full Stack Developer" />
-                <meta name="twitter:description" content="Check out my latest web development projects and technical skills." />
+                <meta name="twitter:description" content="Check out my latest web development projects, technical blog, and technical skills." />
                 <meta name="twitter:image" content="https://portfolio-dominik.vercel.app/preview.png" />
 
                 <script type="application/ld+json">
@@ -146,10 +148,21 @@ export default function Home() {
                         "url": "https://portfolio-dominik.vercel.app",
                         "sameAs": [
                             "https://www.linkedin.com/in/dominik-jasi%C5%84ski/",
-                            "https://github.com/Dommmin"
+                            "https://github.com/Dommmin",
+                            "https://dominik-dev.pl",
+                            "https://medium.com/@Dommin"
                         ],
-                        "description": "Experienced Full Stack Developer specializing in modern web technologies and frameworks.",
-                        "image": "https://portfolio-dominik.vercel.app/profile.png"
+                        "description": "Experienced Full Stack Developer specializing in modern web technologies, frameworks, and DevOps practices. Author of technical blog articles about Laravel, Symfony, and DevOps.",
+                        "image": "https://portfolio-dominik.vercel.app/profile.png",
+                        "knowsAbout": [
+                            "Laravel",
+                            "Symfony",
+                            "React",
+                            "Vue.js",
+                            "DevOps",
+                            "Docker",
+                            "CI/CD"
+                        ]
                     })}
                 </script>
             </Head>
@@ -193,6 +206,15 @@ export default function Home() {
                                 aria-label="Visit my technical blog"
                             >
                                 My Blog
+                            </a>
+                            <a
+                                href="https://medium.com/@Dommin"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn btn-outline hover:bg-teal-500/20 border-teal-500 text-teal-400 transition-all"
+                                aria-label="Visit my Medium profile"
+                            >
+                                Medium
                             </a>
                             <button
                                 onClick={handleDownload}
