@@ -187,7 +187,7 @@ export default function Home() {
                             </a>
                             <button
                                 onClick={handleDownload}
-                                className="btn bg-teal-500 hover:bg-teal-600 border-none text-white transition-colors"
+                                className="btn bg-teal-600 hover:bg-teal-700 border-none text-white transition-colors"
                                 aria-label="Download CV"
                             >
                                 Download CV
