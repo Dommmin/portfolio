@@ -76,7 +76,7 @@ export default function Home() {
     const projectsData = [
         {
             title: 'E-commerce Store',
-            tech: 'Laravel & Next.js',
+            tech: 'Laravel & Next.js & Docker',
             link: 'https://github.com/Dommmin/store',
             description: 'Full-stack e-commerce platform with payment integration and admin dashboard.'
         },
@@ -185,6 +185,15 @@ export default function Home() {
                             >
                                 LinkedIn
                             </a>
+                            <a
+                                href="https://dominik-dev.pl"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn btn-outline hover:bg-teal-500/20 border-teal-500 text-teal-400 transition-all"
+                                aria-label="Visit my technical blog"
+                            >
+                                My Blog
+                            </a>
                             <button
                                 onClick={handleDownload}
                                 className="btn bg-teal-600 hover:bg-teal-700 border-none text-white transition-colors"
@@ -237,38 +246,53 @@ export default function Home() {
 
                         <div className="space-y-6 text-lg">
                             <p className="text-gray-300 leading-relaxed">
-                                I&apos;m a passionate Full Stack Developer with 2+ years of experience in creating
+                                I&apos;m a passionate Full Stack Developer with over 3 years of experience in creating
                                 modern web applications. My expertise spans both frontend and backend development,
-                                with a strong focus on the Laravel ecosystem and React/Vue.js.
+                                with a strong focus on the Laravel ecosystem and React/Vue.js. I share my knowledge and insights on my{' '}
+                                <a
+                                    href="https://dominik-dev.pl"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-teal-400 hover:text-teal-300 transition-colors"
+                                    aria-label="Visit my technical blog"
+                                >
+                                    technical blog
+                                </a>.
                             </p>
 
-                            <div className="grid md:grid-cols-2 gap-8">
-                                <div className="bg-gray-700/30 p-6 rounded-xl">
-                                    <h3 className="text-xl font-semibold mb-4 text-teal-400">Technical Skills</h3>
-                                    <div className="flex space-x-10">
-                                        <div>
-                                            <h4 className="font-medium mb-2">Backend</h4>
-                                            <ul className="space-y-1 text-gray-300">
-                                                {['Laravel', 'Symfony', 'REST APIs', 'MySQL'].map((skill) => (
-                                                    <li key={skill} className="flex items-center">
-                                                        <span className="w-2 h-2 bg-teal-400 mr-2 rounded-full" />
-                                                        {skill}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h4 className="font-medium mb-2">Frontend</h4>
-                                            <ul className="space-y-1 text-gray-300">
-                                                {['React', 'Vue.js', 'TypeScript', 'Tailwind CSS'].map((skill) => (
-                                                    <li key={skill} className="flex items-center">
-                                                        <span className="w-2 h-2 bg-teal-400 mr-2 rounded-full" />
-                                                        {skill}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="bg-gray-700/30 p-6 rounded-xl hover:bg-gray-700/50 transition-all duration-300">
+                                    <h3 className="text-xl font-semibold mb-4 text-teal-400">Backend</h3>
+                                    <ul className="space-y-2 text-gray-300">
+                                        {['Laravel', 'Symfony', 'REST APIs', 'MySQL', 'PostgreSQL', 'Redis'].map((skill) => (
+                                            <li key={skill} className="flex items-center">
+                                                <span className="w-2 h-2 bg-teal-400 mr-2 rounded-full" />
+                                                {skill}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="bg-gray-700/30 p-6 rounded-xl hover:bg-gray-700/50 transition-all duration-300">
+                                    <h3 className="text-xl font-semibold mb-4 text-teal-400">Frontend</h3>
+                                    <ul className="space-y-2 text-gray-300">
+                                        {['React', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'Next.js', 'WebSocket'].map((skill) => (
+                                            <li key={skill} className="flex items-center">
+                                                <span className="w-2 h-2 bg-teal-400 mr-2 rounded-full" />
+                                                {skill}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="bg-gray-700/30 p-6 rounded-xl hover:bg-gray-700/50 transition-all duration-300">
+                                    <h3 className="text-xl font-semibold mb-4 text-teal-400">DevOps & Tools</h3>
+                                    <ul className="space-y-2 text-gray-300">
+                                        {['Docker', 'GitHub Actions', 'GitLab CI/CD', 'Linux', 'Nginx'].map((skill) => (
+                                            <li key={skill} className="flex items-center">
+                                                <span className="w-2 h-2 bg-teal-400 mr-2 rounded-full" />
+                                                {skill}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -315,6 +339,11 @@ export default function Home() {
                                 <li>
                                     <a href="https://linkedin.com/in/dominik-jasiński" className="hover:text-teal-400" rel="noopener noreferrer" aria-label="LinkedIn profile">
                                         LinkedIn
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://dominik-dev.pl" className="hover:text-teal-400" rel="noopener noreferrer" aria-label="Visit my technical blog">
+                                        Technical Blog
                                     </a>
                                 </li>
                             </ul>

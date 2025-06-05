@@ -31,7 +31,7 @@ export default function Navbar({ aboutRef, projectsRef }) {
                 <a href="https://dominik-dev.pl"
                    className="btn btn-sm btn-accent"
                    title="My Blog"
-                   aria-label="Visit my blog">My Blog</a>
+                   aria-label="Visit my blog">Blog</a>
             </nav>
             <div className="z-50">
                 <button
